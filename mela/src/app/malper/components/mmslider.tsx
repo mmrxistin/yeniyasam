@@ -8,9 +8,17 @@
 import React, { useEffect, useRef, useState } from "react";
 
 /**
- * Üst slider: Yazarlar slider'ı
- * Otomatik geçişli, dokunmatik kaydırmalı modern slider.
+ * Üst slider: Son Dakika (solda) + Yazarlar (sağda)
+ * Otomatik geçişli, ok butonlu modern slider.
  */
+
+const sonDakika = [
+  { title: "Gîyadin'de siyanür süreci başladı!", href: "/malper/penc", cat: "EKOLOJİ" },
+  { title: "Nisêbîn'de anma alanına ziyaretler sürüyor", href: "/malper/du", cat: "GÜNDEM" },
+  { title: "Maden işçileri kazandı: Direnişimiz zaferle sonuçlandı", href: "/malper/se", cat: "EKONOMİ" },
+  { title: "Irak'ta 12 milletvekili ve yetkilinin mal varlığına el konuldu", href: "/malper/yek", cat: "DÜNYA" },
+  { title: "Uyuşturucuya karşı çıktığı için tutuklanan 3 genç tahliye edildi", href: "/malper/car", cat: "GÜNDEM" },
+];
 
 const yazarlar = [
   { title: "Suriye'de tasfiye mi, yeni bir kuruculuk mu?", author: "Ender İmrek", href: "/malper/mmmmm" },
@@ -32,6 +40,82 @@ function useAutoIndex(length: number, delay = 5000) {
   return [index, setIndex] as const;
 }
 
+function ArrowButtons({
+  count,
+  index,
+  setIndex,
+  dark,
+}: {
+  count: number;
+  index: number;
+  setIndex: (i: number) => void;
+  dark?: boolean;
+}) {
+  const base =
+    "mm-slider-arrow flex h-8 w-8 items-center justify-center rounded-full border shadow-sm transition-all hover:scale-105";
+  const cls = dark
+    ? `${base} border-zinc-600 bg-zinc-800/80 text-white hover:bg-zinc-700`
+    : `${base} border-zinc-300 bg-white/90 text-zinc-800 hover:bg-zinc-100`;
+
+  return (
+    <div className="flex items-center gap-1.5">
+      <button
+        type="button"
+        aria-label="Önceki"
+        className={cls}
+        onClick={() => setIndex((index - 1 + count) % count)}
+      >
+        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        aria-label="Sonraki"
+        className={cls}
+        onClick={() => setIndex((index + 1) % count)}
+      >
+        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  );
+}
+
+function SonDakikaSlider() {
+  const [index, setIndex] = useAutoIndex(sonDakika.length);
+  const item = sonDakika[index];
+
+  return (
+    <div className="mm-hero-slider">
+      <div className="mm-slider-tag mm-slider-tag-red">
+        <span className="size-2 rounded-full bg-white animate-pulse" />
+        SON DAKİKA
+      </div>
+
+      <a href={item.href} className="mm-slider-content group" key={index}>
+        <span className="mm-slider-cat">{item.cat}</span>
+        <h3 className="mm-slider-title">{item.title}</h3>
+      </a>
+
+      <div className="absolute bottom-3 right-3 z-10 flex items-center gap-3">
+        <ArrowButtons count={sonDakika.length} index={index} setIndex={setIndex} />
+        <div className="mm-slider-dots">
+          {sonDakika.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Haber ${i + 1}`}
+              className={`mm-slider-dot ${i === index ? "active" : ""}`}
+              onClick={() => setIndex(i)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function YazarSlider() {
   const [index, setIndex] = useAutoIndex(yazarlar.length, 4000);
   const item = yazarlar[index];
@@ -50,15 +134,18 @@ function YazarSlider() {
         </div>
       </a>
 
-      <div className="mm-slider-dots">
-        {yazarlar.map((_, i) => (
-          <button
-            key={i}
-            aria-label={`Yazı ${i + 1}`}
-            className={`mm-slider-dot dark ${i === index ? "active" : ""}`}
-            onClick={() => setIndex(i)}
-          />
-        ))}
+      <div className="absolute bottom-3 right-3 z-10 flex items-center gap-3">
+        <ArrowButtons count={yazarlar.length} index={index} setIndex={setIndex} dark />
+        <div className="mm-slider-dots">
+          {yazarlar.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Yazı ${i + 1}`}
+              className={`mm-slider-dot dark ${i === index ? "active" : ""}`}
+              onClick={() => setIndex(i)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -66,8 +153,13 @@ function YazarSlider() {
 
 export default function MmSlider() {
   return (
-    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5">
-      <YazarSlider />
+    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-12">
+      <div className="lg:col-span-7">
+        <SonDakikaSlider />
+      </div>
+      <div className="lg:col-span-5">
+        <YazarSlider />
+      </div>
     </div>
   );
 }
