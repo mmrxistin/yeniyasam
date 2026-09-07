@@ -40,7 +40,7 @@ return (
           className="group flex items-center gap-2 no-underline"
         >
           <div>
-            <div className="text-xl font-black tracking-[-0.04em] text-[#18181b] transition-colors group-hover:text-[#d90000] sm:text-2xl">
+            <div className="text-xl font-black tracking-[-0.02em] sm:text-2xl" style={{ fontFamily: "'Georgia', 'Times New Roman', serif", color: '#bb1919' }}>
               YENİ YAŞAM
             </div>
           </div>
@@ -124,35 +124,12 @@ return (
       </nav>
     </div>
 
-    {/* SLIDER — TEK ÇERÇEVE */}
-    <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8">
+    {/* SLIDER — TEK ÇERÇEVE (ana sayfa çerçevesiyle aynı hizada) */}
+    <div className="mx-auto w-full max-w-[1680px] px-4 py-0 sm:px-6 lg:px-4">
       <div className="mm-navbar-slider-frame">
         <div className="mm-navbar-slider-inner">
           <MmSlider />
         </div>
-      </div>
-    </div>
-
-    {/* BBC Live / Son Dakika Ticker Bar */}
-    <div className="border-y border-zinc-200 bg-[#f4f4f5]">
-      <div className="mx-auto flex min-h-[42px] max-w-[1600px] items-center px-4 sm:px-6 lg:px-8">
-
-        <span className="flex shrink-0 items-center gap-2 rounded-sm bg-[#b5121b] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-white">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-50" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-          </span>
-          Yazarlar
-        </span>
-
-        <div className="mx-3 h-4 w-px shrink-0 bg-white/10" />
-
-        <div className="min-w-0 overflow-hidden">
-          <div className="truncate text-xs font-medium text-zinc-400">
-            Gîyadin'de siyanür süreci başladı! — Nisêbîn'de anma alanına ziyaretler sürüyor — Maden işçileri kazandı: Direnişimiz zaferle sonuçlandı — Irak'ta 12 milletvekili ve yetkilinin mal varlığına el konuldu
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -178,7 +155,7 @@ export default Mmmnavbar;
 // Elhamdulillah Elhamdulillah Elhamdulillah
 // Elhamdulillah Elhamdulillah Elhamdulillah
 // Elhamdulillahirabbilalemin
-// La ilahe illAllahu vahdehu la sharika leh, lehu'l-mulku ve lehu'l-hamdu.
+// La ilahe illAllahu vahdehu (Esma Ul Husna)la sharika leh, lehu'l-mulku ve lehu'l-hamdu.
 
 // yuhyi ve yumit
 // Biyadihil xayr

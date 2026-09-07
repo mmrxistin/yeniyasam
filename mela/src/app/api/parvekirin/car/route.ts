@@ -7,7 +7,7 @@
 
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { getPencInclude, PencPage } from "@/lib/types";
+import { getCarDataInclude, CarPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
     }
 
     const posts = await prisma.car.findMany({
-      include: getPencInclude(user.id),
+      include: getCarDataInclude(user.id),
       orderBy: { createdAt: "desc" },
       take: pageSize + 1,
       cursor: cursor ? { id: cursor } : undefined,
@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
           content: Array.isArray(post.content) ? post.content : [post.content]
         })),
         nextCursor,
-      } as unknown as PencPage;
+      } as unknown as CarPage;
 
     return Response.json(data);
   } catch (error) {

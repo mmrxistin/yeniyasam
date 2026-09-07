@@ -922,7 +922,7 @@ main video {
 
   grid-template-columns:
     minmax(0, 1fr)
-    390px;
+    420px;
 
   width: 100%;
 
@@ -1251,7 +1251,7 @@ main video {
 
 @media (max-width: 1024px) {
   .mm-grid-frame {
-    grid-template-columns: minmax(0, 1fr) 330px;
+    grid-template-columns: minmax(0, 1fr) 350px;
   }
 
   .mm-tv-panel {
