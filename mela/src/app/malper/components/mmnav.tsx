@@ -9,6 +9,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import MmSlider from './mmslider';
 
 const NAV_LINKS = [
@@ -25,6 +26,7 @@ const NAV_LINKS = [
 
 function Mmmnavbar() {
 const [open, setOpen] = useState(false);
+const { theme, setTheme } = useTheme();
 
 return (
 <>
@@ -50,6 +52,15 @@ return (
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-3">
+
+          <button
+            type="button"
+            aria-label="Tema değiştir"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="flex h-9 items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-700 no-underline transition-all hover:bg-zinc-100 hover:text-[#111]"
+          >
+            <span>{theme === 'dark' ? 'Açık' : 'Koyu'}</span>
+          </button>
 
           <span className="hidden text-xs font-medium capitalize text-zinc-500 md:inline-block">
             {new Date().toLocaleDateString('tr-TR', {
