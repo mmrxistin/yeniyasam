@@ -73,7 +73,7 @@ async function getKarikatur(): Promise<{ img: string; href: string; title: strin
 
     const html = await res.text();
     const match = html.match(
-      /<h3[^>]*>\s*<span>KARİKATÜR<\/span>\s*<\/h3>.*?<a[^>]*href="([^"]+)"[^>]*>\s*<img[^>]*src="([^"]+)"/is
+      /<h3[^>]*>\s*<span>KARİKATÜR<\/span>\s*<\/h3>[\s\S]*?<a[^>]*href="([^"]+)"[^>]*>\s*<img[^>]*src="([^"]+)"/i
     );
 
     if (!match) {
@@ -110,7 +110,7 @@ export default async function Layout({
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f4f4f5]">
+    <div className="min-h-screen flex flex-col bg-white">
       {/*
       <Alert variant="success" style={{ width: "100%", textAlign: "center" }}>
         اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ

@@ -124,20 +124,35 @@ function YazarSlider() {
   );
 }
 
+function WeatherWidget() {
+  return (
+    <div className="mm-weather-panel" aria-label="Hava durumu">
+      <div className="mm-weather-header">
+        <span className="mm-weather-badge">HAVA DURUMU</span>
+        <span className="mm-weather-city">Diyarbakır</span>
+      </div>
+
+      <div className="mm-weather-body">
+        <div className="mm-weather-icon" aria-hidden="true">
+          ☀️
+        </div>
+        <div className="mm-weather-main">
+          <div className="mm-weather-temp">31°</div>
+          <div className="mm-weather-meta">Güneşli · 18 km/s</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function MmSlider() {
   return (
-    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-[1fr_minmax(260px,420px)_1fr] lg:items-center">
       <div>
         <SonDakikaSlider />
       </div>
 
-      <div className="mm-slider-divider" aria-label="Yeni Yaşam logosu ayracı">
-        <img
-          src="https://yeniyasamgazetesi9.com/wp-content/uploads/2022/01/logo-e1643612364952.png"
-          alt="Yeni Yaşam"
-          className="mm-slider-divider-logo"
-        />
-      </div>
+      <WeatherWidget />
 
       <div>
         <YazarSlider />
