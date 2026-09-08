@@ -1,10 +1,10 @@
 // Bismillahirahmanirahim
 // Elhamdulillahirrabbulalemin
-// Esselatu vesselamu ala seyyidina Muhammedin 
+// Esselatu vesselamu ala seyyidina Muhammedin
 // Subhanallah, Elhamdulillah, Allahu Ekber
-// La ilahe illAllah 
+// La ilahe illAllah
 // Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illAllah
-// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin 
+// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin
 // Xeyni Allah tu Xweda tune
 // Allah u Ekber Ve Lillahil Hamd
 "use client";
@@ -92,7 +92,7 @@ export default function SignUpForm() {
           )}
         />
         <LoadingButton loading={isPending} type="submit" className="w-full">
-          Sign Up
+          Yeni Yaşam — Üye Ol (Normal Üyelik)
         </LoadingButton>
       </form>
     </Form>

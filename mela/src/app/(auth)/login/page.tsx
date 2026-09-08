@@ -1,13 +1,13 @@
-// Bismillahirahmanirahim 
+// Bismillahirahmanirahim
 
 
 // Bismillahirahmanirahim
 // Elhamdulillahirrabbulalemin
 // Esselatu vesselamu ala seyyidina Muhammedin
 // Subhanallah, Elhamdulillah, Allahu Ekber
-// La ilahe illAllah 
+// La ilahe illAllah
 // Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illAllah
-// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin 
+// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin
 // Xeyni Allah tu Xweda tune
 // Allah u Ekber Ve Lillahil Hamd
 
@@ -29,16 +29,16 @@ export default function Page() {
     <main  className="flex h-screen items-center justify-center p-5">
       <div className="flex h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl bg-card shadow-2xl">
         <div className="w-full space-y-10 overflow-y-auto p-10 md:w-1/2">
-          <h1 className="text-center text-3xl font-bold">admin</h1>
+          <h1 className="text-center text-3xl font-bold">Yeni Yaşam — Üye Girişi</h1>
           <div className="space-y-5">
-            
+
             <div className="flex items-center gap-3">
               <div className="h-px flex-1 bg-muted" />
               <span>.....</span>
               <div className="h-px flex-1 bg-muted" />
             </div>
             <LoginForm />
-  
+
 
           </div>
         </div>

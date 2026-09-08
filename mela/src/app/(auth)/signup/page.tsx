@@ -2,9 +2,9 @@
 // Elhamdulillahirrabbulalemin
 // Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
 // Subhanallah, Elhamdulillah, Allahu Ekber
-// La ilahe illallah 
+// La ilahe illallah
 // Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
-// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin 
+// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin
 // Xeyni Allah tu Xweda tune
 
 
@@ -24,13 +24,13 @@ export default function Page() {
       <div className="flex h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl bg-card shadow-2xl">
         <div className="w-full space-y-10 overflow-y-auto p-10 md:w-1/2">
           <div className="space-y-1 text-center">
-            <h1 className="text-3xl font-bold">Signup Yekazad SC</h1>
+            <h1 className="text-3xl font-bold">Yeni Yaşam — Üye Ol (Normal Üyelik)</h1>
 
           </div>
           <div className="space-y-5">
             <SignUpForm />
             <Link href="/login" className="block text-center hover:underline">
-              Already have an account? Login
+              Hesabınız var mı? Giriş Yapın
             </Link>
           </div>
         </div>
