@@ -9,7 +9,6 @@
 // La ilahe illAllah, Allahu Ekber, Allahu Ekber ve lillahi'l-hamd
 import React from "react";
 import Mmmnavbar from "./components/mmnav";
-import MmSlider from "./components/mmslider";
 import Footer from "./components/mmbingeh";
 import ContactForm from "./components/mmfrm";
 import MmLiveTv from "./components/mmlivetv";
@@ -43,7 +42,6 @@ async function getGununManseti(): Promise<{ img: string; href: string } | null> 
     });
     if (!res.ok) return null;
     const html = await res.text();
-    // Gazete kapağını yakala: güncel yıl/ay klasöründeki ilk büyük görsel
     const now = new Date();
     const ym = `${now.getFullYear()}/${String(now.getMonth() + 1).padStart(2, "0")}`;
     const esc = ym.replace("/", "\\/");
@@ -64,12 +62,47 @@ async function getGununManseti(): Promise<{ img: string; href: string } | null> 
     return null;
   }
 }
+
+async function getKarikatur(): Promise<{ img: string; href: string; title: string } | null> {
+  try {
+    const res = await fetch("https://yeniyasamgazetesi9.com/", {
+      next: { revalidate: 3600 },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; YeniYasamBot/1.0)" },
+    });
+    if (!res.ok) return null;
+
+    const html = await res.text();
+    const match = html.match(
+      /<h3[^>]*>\s*<span>KARİKATÜR<\/span>\s*<\/h3>.*?<a[^>]*href="([^"]+)"[^>]*>\s*<img[^>]*src="([^"]+)"/is
+    );
+
+    if (!match) {
+      const fallback = html.match(/https:\/\/yeniyasamgazetesi9\.com\/wp-content\/uploads\/[^"'\s]+\.(?:jpg|jpeg|png|webp)/i);
+      if (!fallback) return null;
+      return {
+        img: fallback[0],
+        href: "https://yeniyasamgazetesi9.com/karikatur/",
+        title: "Karikatür",
+      };
+    }
+
+    return {
+      img: match[2],
+      href: match[1],
+      title: "Karikatür",
+    };
+  } catch {
+    return null;
+  }
+}
+
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const manset = await getGununManseti();
+  const karikatur = await getKarikatur();
   const bugun = new Date().toLocaleDateString("tr-TR", {
     day: "2-digit",
     month: "2-digit",
@@ -156,6 +189,29 @@ export default async function Layout({
                     </a>
                   ))}
                 </div>
+              </div>
+
+              <div className="mm-karikatur-box">
+                <div className="mm-karikatur-head">KARİKATÜR</div>
+                {karikatur ? (
+                  <a
+                    href={karikatur.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mm-karikatur-link"
+                  >
+                    <img
+                      src={karikatur.img}
+                      alt={karikatur.title}
+                      className="mm-karikatur-img"
+                    />
+                    <span className="mm-karikatur-caption">Günün karikatürü</span>
+                  </a>
+                ) : (
+                  <div className="mm-karikatur-fallback">
+                    Karikatür şu anda yüklenemedi.
+                  </div>
+                )}
               </div>
 
             </div>

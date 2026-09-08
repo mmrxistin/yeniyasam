@@ -5,7 +5,7 @@
 // SubhanAllah, Elhamdulillah,  La ilahe illAllah u Allahu Ekber
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 /**
  * Üst slider: Son Dakika (solda) + Yazarlar (sağda)
@@ -28,15 +28,8 @@ const yazarlar = [
   { title: "Müzakere ve mücadele", author: "Ertuğrul Kürkçü", href: "/malper/mmmmm" },
 ];
 
-function useAutoIndex(length: number, delay = 5000) {
+function useAutoIndex(length: number) {
   const [index, setIndex] = useState(0);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  useEffect(() => {
-    timer.current = setInterval(() => setIndex((i) => (i + 1) % length), delay);
-    return () => { if (timer.current) clearInterval(timer.current); };
-  }, [length, delay]);
-
   return [index, setIndex] as const;
 }
 
@@ -101,23 +94,13 @@ function SonDakikaSlider() {
 
       <div className="absolute bottom-3 right-3 z-10 flex items-center gap-3">
         <ArrowButtons count={sonDakika.length} index={index} setIndex={setIndex} />
-        <div className="mm-slider-dots">
-          {sonDakika.map((_, i) => (
-            <button
-              key={i}
-              aria-label={`Haber ${i + 1}`}
-              className={`mm-slider-dot ${i === index ? "active" : ""}`}
-              onClick={() => setIndex(i)}
-            />
-          ))}
-        </div>
       </div>
     </div>
   );
 }
 
 function YazarSlider() {
-  const [index, setIndex] = useAutoIndex(yazarlar.length, 4000);
+  const [index, setIndex] = useAutoIndex(yazarlar.length);
   const item = yazarlar[index];
 
   return (
@@ -136,16 +119,6 @@ function YazarSlider() {
 
       <div className="absolute bottom-3 right-3 z-10 flex items-center gap-3">
         <ArrowButtons count={yazarlar.length} index={index} setIndex={setIndex} dark />
-        <div className="mm-slider-dots">
-          {yazarlar.map((_, i) => (
-            <button
-              key={i}
-              aria-label={`Yazı ${i + 1}`}
-              className={`mm-slider-dot dark ${i === index ? "active" : ""}`}
-              onClick={() => setIndex(i)}
-            />
-          ))}
-        </div>
       </div>
     </div>
   );
@@ -153,11 +126,11 @@ function YazarSlider() {
 
 export default function MmSlider() {
   return (
-    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-12">
-      <div className="lg:col-span-7">
+    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-2">
+      <div>
         <SonDakikaSlider />
       </div>
-      <div className="lg:col-span-5">
+      <div>
         <YazarSlider />
       </div>
     </div>

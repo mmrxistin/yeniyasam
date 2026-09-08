@@ -28,10 +28,10 @@ const [open, setOpen] = useState(false);
 
 return (
 <>
-<header className="relative z-50 w-full bg-white text-[#18181b] border-b border-zinc-200">
+<header className="relative z-50 w-full border-b border-zinc-200 bg-[#f3f4f6] text-[#18181b]">
 
     {/* BBC Style Top Header Bar */}
-    <div className="border-b border-zinc-200 bg-white">
+    <div className="border-b border-zinc-200 bg-[#f3f4f6]">
       <div className="mx-auto flex min-h-[58px] max-w-[1600px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
 
         <Link
@@ -110,7 +110,7 @@ return (
 
     {/* ANA MENÜ — açılıp kapanabilir */}
     <div className={`mm-menu-wrap ${open ? 'mm-menu-open' : ''}`} id="mm-main-menu">
-      <nav className="mx-auto w-full max-w-[1600px] px-0 lg:px-8">
+      <nav className="mx-auto w-full max-w-[1600px] bg-[#f3f4f6] px-0 lg:px-8">
         <ul className="m-0 flex w-full list-none flex-col p-0 lg:flex-row lg:items-center lg:flex-wrap">
           {NAV_LINKS.map((link) => (
             <li key={link.href} className="w-full lg:w-auto">
@@ -127,7 +127,7 @@ return (
       </nav>
     </div>
 
-    {/* SLIDER — TEK ÇERÇEVE (ana sayfa çerçevesiyle aynı hizada) */}
+    {/* SLIDER — ana sayfa ile aynı hizaya ve çerçeveye oturtulmuş */}
     <div className="mx-auto w-full max-w-[1680px] px-4 py-0 sm:px-6 lg:px-4">
       <div className="mm-navbar-slider-frame">
         <div className="mm-navbar-slider-inner">

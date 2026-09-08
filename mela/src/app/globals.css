@@ -978,6 +978,64 @@ main video {
   color: #bb1919;
 }
 
+.mm-karikatur-box {
+  overflow: hidden;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #ededee;
+  border-top: 3px solid #bb1919;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.mm-karikatur-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 0.8rem;
+  background: linear-gradient(90deg, #fafafa, #f1f1f1);
+  border-bottom: 1px solid #dedede;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #18181b;
+}
+
+.mm-karikatur-link {
+  display: block;
+  text-decoration: none;
+  padding: 0.75rem;
+}
+
+.mm-karikatur-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e4e4e7;
+  background: #f4f4f5;
+}
+
+.mm-karikatur-caption {
+  display: block;
+  margin-top: 0.6rem;
+  color: #4b5563;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.mm-karikatur-fallback {
+  padding: 1.25rem 1rem;
+  color: #71717a;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
 /* ============================================================
    TAM EKRAN IZGARA YERLEŞİMİ — site geneli tek büyük çerçeve
    ============================================================ */
@@ -1793,7 +1851,9 @@ main .grid > div:hover {
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center center;
+  background: #0a0a0a;
 
   user-select: none;
 }
@@ -2304,18 +2364,14 @@ main .grid > div:hover {
 
     .mm-navbar-slider-frame {
       width: 100%;
-      margin: 8px 0 10px;
-      padding: 0;
-
+      max-width: 1280px;
+      margin: 8px auto 12px;
+      padding: 12px;
       box-sizing: border-box;
-
-      background: transparent;
-
-      border: none;
-
-      border-radius: 0;
-
-      box-shadow: none;
+      background: #f8f9fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
     }
 
     .mm-navbar-slider-inner {
@@ -2330,18 +2386,19 @@ main .grid > div:hover {
 
     .mm-navbar-slider-inner > div {
       width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
     .mm-navbar-slider-inner .mm-hero-slider,
     .mm-navbar-slider-inner .mm-yazar-slider {
       box-sizing: border-box;
-
       width: 100% !important;
-
       min-height: 190px !important;
       height: 190px !important;
-
       margin: 0 !important;
+      border-radius: 10px !important;
     }
 
 
@@ -2382,6 +2439,12 @@ main .grid > div:hover {
        TABLET
        ============================================================ */
 
+    @media (min-width: 1024px) {
+      .mm-navbar-slider-inner > div {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 1023px) {
 
       .nav-modern-link {
@@ -2399,7 +2462,7 @@ main .grid > div:hover {
 
       .mm-navbar-slider-frame {
         margin-top: 8px;
-        padding: 0;
+        padding: 8px;
       }
 
       .mm-navbar-slider-inner .mm-hero-slider,
