@@ -553,6 +553,85 @@ main video {
 }
 
 /* ============================================================
+   GÜNÜN MANŞETİ (gazete kapağı)
+   ============================================================ */
+
+.mm-manset-box {
+  overflow: hidden;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+}
+
+.mm-manset-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  padding: 0.6rem 0.8rem;
+
+  background: linear-gradient(90deg, #bb1919, #d51d29);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.mm-manset-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  text-decoration: none;
+}
+
+.mm-manset-img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mm-manset-link:hover .mm-manset-img {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mm-manset-date {
+  margin-top: 0.55rem;
+
+  color: #71717a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.mm-manset-link:hover .mm-manset-date {
+  color: #bb1919;
+}
+
+.mm-manset-fallback {
+  padding: 1.5rem 1rem;
+  color: #71717a;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.dark .mm-manset-box {
+  background: #181818;
+  border-color: #303030;
+}
+
+/* ============================================================
    CANLI TV KARTLARI (Layout TV bölümü)
    ============================================================ */
 
@@ -2226,23 +2305,17 @@ main .grid > div:hover {
     .mm-navbar-slider-frame {
       width: 100%;
       margin: 8px 0 10px;
-      padding: 5px;
+      padding: 0;
 
       box-sizing: border-box;
 
-      background:
-        linear-gradient(
-          145deg,
-          #ffffff 0%,
-          #f4f4f5 100%
-        );
+      background: transparent;
 
-      border: 1px solid #d4d4d8;
+      border: none;
 
-      border-radius: 10px;
+      border-radius: 0;
 
-      box-shadow:
-        0 4px 14px rgba(0,0,0,.06);
+      box-shadow: none;
     }
 
     .mm-navbar-slider-inner {
@@ -2326,7 +2399,7 @@ main .grid > div:hover {
 
       .mm-navbar-slider-frame {
         margin-top: 8px;
-        padding: 8px;
+        padding: 0;
       }
 
       .mm-navbar-slider-inner .mm-hero-slider,

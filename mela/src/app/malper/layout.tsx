@@ -1,7 +1,7 @@
 // Bismillahirahmanirahim
 // Elhamdulillahirabbulalemin
 // Esselatu vesselamu ala rasulillah
-// La ilahe illAllahu vahdehu la sharika leh, lehu'l-mulku ve lehu'l-hamdu, 
+// La ilahe illAllahu vahdehu la sharika leh, lehu'l-mulku ve lehu'l-hamdu,
 // yuhyi ve yumit
 // bîyadîhîl xayr
 //  ve huve ala kulli şey'in kadir
@@ -32,11 +32,50 @@ const editorPicks = [
 
 
 // El Hamdu Lîllah ya Kerîm î Rezzaq î Vehhab î Ehed î Quddus î Heq bêdawîtî..
+
+// Günün Manşeti — yeniyasamgazetesi9.com/gunun-manseti/ sayfasından
+// güncel gazete kapağı dinamik olarak çekilir.
+async function getGununManseti(): Promise<{ img: string; href: string } | null> {
+  try {
+    const res = await fetch("https://yeniyasamgazetesi9.com/gunun-manseti/", {
+      next: { revalidate: 3600 },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; YeniYasamBot/1.0)" },
+    });
+    if (!res.ok) return null;
+    const html = await res.text();
+    // Gazete kapağını yakala: güncel yıl/ay klasöründeki ilk büyük görsel
+    const now = new Date();
+    const ym = `${now.getFullYear()}/${String(now.getMonth() + 1).padStart(2, "0")}`;
+    const esc = ym.replace("/", "\\/");
+    const re = new RegExp(
+      `https://yeniyasamgazetesi9\\.com/wp-content/uploads/${esc}/[^"'\\s]+\\.(?:jpg|jpeg|png)`,
+      "i"
+    );
+    const match = html.match(re);
+    if (!match) {
+      const fallback = html.match(
+        /https:\/\/yeniyasamgazetesi9\.com\/wp-content\/uploads\/[^"'\s]+\.(?:jpg|jpeg|png)/i
+      );
+      if (!fallback) return null;
+      return { img: fallback[0], href: "https://yeniyasamgazetesi9.com/gunun-manseti/" };
+    }
+    return { img: match[0], href: "https://yeniyasamgazetesi9.com/gunun-manseti/" };
+  } catch {
+    return null;
+  }
+}
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const manset = await getGununManseti();
+  const bugun = new Date().toLocaleDateString("tr-TR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
   return (
     <div className="min-h-screen flex flex-col bg-[#f4f4f5]">
       {/*
@@ -55,7 +94,7 @@ export default async function Layout({
           {/* ANA İÇERİK */}
           <main className="mm-main-col p-3 sm:p-4 md:p-5">
 
-                {children}
+            {children}
 
 
           </main>
@@ -67,6 +106,31 @@ export default async function Layout({
 
               {/* ABC News tarzı Canlı TV */}
               <MmLiveTv />
+
+              {/* GÜNÜN MANŞETİ — gazete kapağı */}
+              <div className="mm-manset-box">
+                <div className="mm-manset-head">GÜNÜN MANŞETİ</div>
+                {manset ? (
+                  <a
+                    href={manset.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mm-manset-link"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={manset.img}
+                      alt={`Günün Manşeti — ${bugun}`}
+                      className="mm-manset-img"
+                    />
+                    <span className="mm-manset-date">{bugun}</span>
+                  </a>
+                ) : (
+                  <div className="mm-manset-fallback">
+                    Gazete kapağı şu anda yüklenemedi.
+                  </div>
+                )}
+              </div>
 
               {/* Editörün Seçtikleri */}
               <div className="mm-editor-pick">

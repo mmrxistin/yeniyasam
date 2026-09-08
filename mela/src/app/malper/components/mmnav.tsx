@@ -39,10 +39,13 @@ return (
           onClick={() => setOpen(false)}
           className="group flex items-center gap-2 no-underline"
         >
-          <div>
-            <div className="text-xl font-black tracking-[-0.02em] sm:text-2xl" style={{ fontFamily: "'Georgia', 'Times New Roman', serif", color: '#bb1919' }}>
-              YENİ YAŞAM
-            </div>
+          <div className="relative h-10 w-auto sm:h-12">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://yeniyasamgazetesi9.com/wp-content/uploads/2022/01/logo-e1643612364952.png"
+              alt="Yeni Yaşam"
+              className="h-10 w-auto object-contain sm:h-12"
+            />
           </div>
         </Link>
 
