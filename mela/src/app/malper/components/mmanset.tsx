@@ -53,29 +53,24 @@ function MansetSlider() {
   const onceki = () => goto((index - 1 + mansetler.length) % mansetler.length);
   const sonraki = () => goto((index + 1) % mansetler.length);
 
+  const item = mansetler[index];
+
   return (
     <div className="mm-manset-slider">
-      {mansetler.map((m, i) => (
-        <a
-          key={i}
-          href={m.href}
-          className={`mm-manset-slide ${i === index ? "mm-manset-active" : ""}`}
-          aria-hidden={i !== index}
-        >
-          <img src={m.img} alt={m.title} className="mm-manset-img" draggable={false} />
-          <div className="mm-manset-grad" />
+      <a href={item.href} className="mm-manset-slide mm-manset-active" aria-label={item.title}>
+        <img src={item.img} alt={item.title} className="mm-manset-img" draggable={false} />
+        <div className="mm-manset-grad" />
 
-          <div className="mm-manset-tag">
-            <span className="size-2 rounded-full bg-white animate-pulse" />
-            MANŞET • {m.cat}
-          </div>
+        <div className="mm-manset-tag">
+          <span className="size-2 rounded-full bg-white animate-pulse" />
+          MANŞET • {item.cat}
+        </div>
 
-          <div className="mm-manset-text">
-            <h2 className="mm-manset-title">{m.title}</h2>
-            <p className="mm-manset-desc">{m.desc}</p>
-          </div>
-        </a>
-      ))}
+        <div className="mm-manset-text">
+          <h2 className="mm-manset-title">{item.title}</h2>
+          <p className="mm-manset-desc">{item.desc}</p>
+        </div>
+      </a>
 
       {/* Oklar */}
       <button aria-label="Önceki haber" className="mm-manset-arrow mm-manset-prev" onClick={(e) => { e.preventDefault(); onceki(); }}>
