@@ -72,7 +72,9 @@ function MediaPreviews({ attachments }: MediaPreviewsProps) {
       )}
     >
       {attachments.map((m) => (
-        <MediaPreview key={m.id} media={m} />
+        <div key={m.id} className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100">
+          <MediaPreview media={m} />
+        </div>
       ))}
     </div>
   );
@@ -88,9 +90,9 @@ function MediaPreview({ media }: MediaPreviewProps) {
       <Image
         src={media.url}
         alt="Attachment"
-        width={500}
-        height={500}
-        className="mx-auto size-fit max-h-[30rem] rounded-2xl"
+        width={1200}
+        height={900}
+        className="h-[18rem] w-full object-contain sm:h-[22rem]"
       />
     );
   }
