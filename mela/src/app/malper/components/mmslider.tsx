@@ -126,10 +126,19 @@ function YazarSlider() {
 
 export default function MmSlider() {
   return (
-    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-2">
+    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
       <div>
         <SonDakikaSlider />
       </div>
+
+      <div className="mm-slider-divider" aria-label="Yeni Yaşam logosu ayracı">
+        <img
+          src="https://yeniyasamgazetesi9.com/wp-content/uploads/2022/01/logo-e1643612364952.png"
+          alt="Yeni Yaşam"
+          className="mm-slider-divider-logo"
+        />
+      </div>
+
       <div>
         <YazarSlider />
       </div>

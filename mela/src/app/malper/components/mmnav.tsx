@@ -128,7 +128,7 @@ return (
     </div>
 
     {/* SLIDER — ana sayfa ile aynı hizaya ve çerçeveye oturtulmuş */}
-    <div className="mx-auto w-full max-w-[1680px] px-4 py-0 sm:px-6 lg:px-4">
+    <div className="mx-auto w-full max-w-[1945px] py-12 ">
       <div className="mm-navbar-slider-frame">
         <div className="mm-navbar-slider-inner">
           <MmSlider />

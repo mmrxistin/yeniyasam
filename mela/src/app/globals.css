@@ -2364,9 +2364,9 @@ main .grid > div:hover {
 
     .mm-navbar-slider-frame {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1545px;
       margin: 8px auto 12px;
-      padding: 12px;
+      padding: 20px;
       box-sizing: border-box;
       background: #f8f9fa;
       border: 1px solid #e5e7eb;
@@ -2388,7 +2388,20 @@ main .grid > div:hover {
       width: 100%;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 37px;
+    }
+
+    .mm-slider-divider {
+      display: none;
+    }
+
+    .mm-slider-divider-logo {
+      display: block;
+      width: 140px;
+      height: auto;
+      object-fit: contain;
+      opacity: 0.95;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.14));
     }
 
     .mm-navbar-slider-inner .mm-hero-slider,
@@ -2441,7 +2454,17 @@ main .grid > div:hover {
 
     @media (min-width: 1024px) {
       .mm-navbar-slider-inner > div {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 37px;
+      }
+
+      .mm-slider-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-width: 170px;
+        height: 100%;
       }
     }
 
