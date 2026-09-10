@@ -73,9 +73,32 @@ async function getKarikatur(): Promise<{ img: string; href: string; title: strin
   } catch { return null; }
 }
 
+async function getJinDergiManset(): Promise<{ img: string; title: string; href: string } | null> {
+  try {
+    const res = await fetchWithTimeout("https://jindergi.com/");
+    if (!res.ok) return null;
+    const html = await res.text();
+
+    // Jin Dergi genellikle og:image ve og:title kullanır
+    const imgMatch = html.match(/<meta[^>]*property="og:image"[^>]*content="([^"]+)"/i);
+    const titleMatch = html.match(/<meta[^>]*property="og:title"[^>]*content="([^"]+)"/i);
+    const urlMatch = html.match(/<meta[^>]*property="og:url"[^>]*content="([^"]+)"/i);
+
+    if (imgMatch && titleMatch) {
+      return {
+        img: imgMatch[1],
+        title: titleMatch[1],
+        href: urlMatch ? urlMatch[1] : "https://jindergi.com"
+      };
+    }
+    return null;
+  } catch { return null; }
+}
+
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const manset = await getGununManseti();
   const karikatur = await getKarikatur();
+  const jinManset = await getJinDergiManset();
   const bugun = new Date().toLocaleDateString("tr-TR", { day: "2-digit", month: "2-digit", year: "numeric" });
 
   return (
@@ -124,7 +147,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
               {/* JİN DERGİ — Sidebar Box */}
               <div className="mt-2">
-                <MmJinDergi sidebar />
+                <MmJinDergi sidebar mansetData={jinManset} />
               </div>
 
               {/* E-GAZETE — Fill Gaps */}
