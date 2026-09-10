@@ -8,23 +8,18 @@
 
 
 // El Hamdu Lîllah ya Rabbi'l-Âlemîn, El Hamdu Lîllah yâ Rabbi'l-Âlemîn, El Hamdu Lîllah yâ Rabbi'l-Âlemîn
-// La ilahe illALLAH u vahdehu la şerike leh, lehul-mulku ve lehu'l-hamdu
+// La ilahe illALLAH u vahdehu la şerike leh, lehul-mulku ve lehu'l-hamdu.
 // Yuhyi ve yumit
 // Biyadihil xayr
 // ve huve ala kulli şey'in kadir
- import React from 'react'
- import MansetSlider from './components/mmanset'
- import ParvekirinaYek from './yek/parvekirin'
- import Parvekirinayekayeke from './yek/yek/parvekirin'
-
- import Du from './du/parvekirin'
- import Rojnm from './rojname/ForYouFeed'
- import Dirok from './dirok/ForYouFeed'
- import Car from './car/ForYouFeed'
- import Penc from './penc/ForYouFeed'
- import Se from './se/parvekirin'
- import Xane from './xane/ForYouFeed'
+import React from 'react'
+import MansetSlider from './components/mmanset'
 import MmSlider from './components/mmslider'
+import MmVideoGallery from './components/mmvideos'
+import MmPhotoGallery from './components/mmfoto'
+import MmAuthorGrid from './components/mmyazarliste'
+import MmJinDergi from './components/mmjin'
+import ParvekirinaYek from './yek/parvekirin'
  // El Hamdu Lîllah ya Rabbi'l-Âlemîn, El Hamdu Lîllah yâ Rabbi'l-Âlemîn, El Hamdu Lîllah yâ Rabbi'l-Âlemîn
  // La ilahe illALLAH u vahdehu la şerike leh, lehul-mulku ve lehu'l-hamdu.
  // Yuhyi ve yumit
@@ -130,6 +125,9 @@ function page() {
         </div>
       </section>
 
+      {/* FOTO GALERİ — Manşet altı şeridi */}
+      <MmPhotoGallery />
+
 
       {/* HABER AKIŞI */}
       <section className="border-t border-zinc-200 bg-white px-4 py-8 sm:px-6">
@@ -148,7 +146,11 @@ function page() {
                   <article className="group py-6">
                     <div className="flex flex-col gap-5 md:flex-row">
                       <div className="h-48 w-full shrink-0 overflow-hidden bg-zinc-100 md:h-40 md:w-64">
-                        <Parvekirinayekayeke />
+                        <img
+                          src="https://yeniyasamgazetesi9.com/wp-content/uploads/2026/08/823x463cc-amd-29-08-26-gulistan-doku-dosya-yeni-gelisme-350x250.jpeg"
+                          alt="Nisêbîn"
+                          className="h-full w-full object-cover"
+                        />
                       </div>
                       <div className="flex flex-1 flex-col">
                         <span className="text-[10px] font-black uppercase tracking-[0.12em] text-[#d90000]">Güncel</span>
@@ -186,7 +188,6 @@ function page() {
                           Uyuşturucu ticaretine karşı çıktığı için tutuklanan 3 genç,
                           yargı sürecinin ardından tahliye edildi.
                         </p>
-                        <Car />
                         <a href="/malper/rojname" className="mt-3 text-xs font-black uppercase tracking-[0.12em] text-[#d90000] no-underline hover:underline">
                           Devamını Oku →
                         </a>
@@ -214,7 +215,6 @@ function page() {
                           Irak Kerx Mahkemesi ve Maliye Bakanlığı, 12 eski milletvekili
                           ile eski danışmanların tüm mal varlıklarına el koydu.
                         </p>
-                        <Rojnm />
                         <a href="/malper/se" className="mt-3 text-xs font-black uppercase tracking-[0.12em] text-[#d90000] no-underline hover:underline">
                           Devamını Oku →
                         </a>
@@ -251,7 +251,6 @@ function page() {
                       </h3>
                     </a>
                   ))}
-                  <Penc />
                 </div>
               </div>
             </aside>
@@ -259,6 +258,12 @@ function page() {
           </div>
         </div>
       </section>
+
+      {/* VİDEO GALERİ */}
+      <MmVideoGallery />
+
+      {/* JİN DERGİ ÖZEL BÖLÜMÜ */}
+      <MmJinDergi />
 
       {/* KATEGORİLER — ABC 4'lü grid */}
       <section className="border-t border-zinc-200 bg-white px-4 py-8 sm:px-6">
@@ -268,19 +273,20 @@ function page() {
             Kategoriler
           </h2>
 
-          <div className="mt-2 grid grid-cols-1 gap-px border border-zinc-200 bg-zinc-200 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-2 grid grid-cols-1 gap-px border border-zinc-200 bg-zinc-200 sm:grid-cols-2 lg:grid-cols-3">
 
             {[
-              { cat: 'Gündem', title: 'Günün Manşeti', href: '/malper/car', comp: null },
-              { cat: 'Kadın', title: 'Kadın Haberleri', href: '/malper/rojname', comp: <Se /> },
-              { cat: 'Kültür', title: 'Kültür & Sanat', href: '/malper/dirok', comp: <Xane /> },
-              { cat: 'Dünya', title: 'Dünya Haberleri', href: '/malper/se', comp: <Dirok /> },
+              { cat: 'Gündem', title: 'Günün Manşeti', href: '/malper/car' },
+              { cat: 'Kadın & Jin', title: 'Jin Dergi & Kadın Haberleri', href: '/malper/rojname' },
+              { cat: 'Kültür', title: 'Kültür & Sanat', href: '/malper/dirok' },
+              { cat: 'Dünya', title: 'Dünya & Ortadoğu', href: '/malper/se' },
+              { cat: 'Ekoloji', title: 'Çevre & Yaşam', href: '/malper/penc' },
+              { cat: 'Emek', title: 'İşçi & Sendika', href: '/malper/yek' },
             ].map((k) => (
               <div key={k.cat} className="flex min-h-[200px] flex-col justify-between bg-white p-6">
                 <div>
                   <span className="text-[10px] font-black uppercase tracking-[0.12em] text-[#d90000]">{k.cat}</span>
                   <h3 className="mt-2 text-xl font-bold">{k.title}</h3>
-                  {k.comp && <div className="mt-3">{k.comp}</div>}
                 </div>
                 <a
                   href={k.href}
@@ -294,6 +300,9 @@ function page() {
           </div>
         </div>
       </section>
+
+      {/* YAZARLAR GRID */}
+      <MmAuthorGrid />
 
       {/* FOOTER AYIRICI */}
       <div className="h-2 bg-zinc-200" />
