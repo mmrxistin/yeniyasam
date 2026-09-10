@@ -139,9 +139,15 @@ export default async function Layout({ children }: { children: React.ReactNode }
               </div>
               <MmLiveTv />
 
-              {/* JİN DERGİ — Sidebar Box (TV'nin hemen altında) */}
-              <div className="mt-2">
-                <MmJinDergi sidebar mansetData={jinManset} />
+              {/* GÜNÜN MANŞETİ — gazete kapağı */}
+              <div className="mm-manset-box mt-2">
+                <div className="mm-manset-head">GÜNÜN MANŞETİ</div>
+                {manset ? (
+                  <a href={manset.href} target="_blank" rel="noopener noreferrer" className="mm-manset-link">
+                    <img src={manset.img} alt={`Günün Manşeti — ${bugun}`} className="mm-manset-img" />
+                    <span className="mm-manset-date">{bugun}</span>
+                  </a>
+                ) : <div className="mm-manset-fallback">Gazete kapağı şu anda yüklenemedi.</div>}
               </div>
 
               <div className="mm-editor-pick">
@@ -155,15 +161,12 @@ export default async function Layout({ children }: { children: React.ReactNode }
                   ))}
                 </div>
               </div>
-              <div className="mm-manset-box">
-                <div className="mm-manset-head">GÜNÜN MANŞETİ</div>
-                {manset ? (
-                  <a href={manset.href} target="_blank" rel="noopener noreferrer" className="mm-manset-link">
-                    <img src={manset.img} alt={`Günün Manşeti — ${bugun}`} className="mm-manset-img" />
-                    <span className="mm-manset-date">{bugun}</span>
-                  </a>
-                ) : <div className="mm-manset-fallback">Gazete kapağı şu anda yüklenemedi.</div>}
+
+              {/* JİN DERGİ — Sidebar Box */}
+              <div className="mt-2">
+                <MmJinDergi sidebar mansetData={jinManset} />
               </div>
+
               <div className="mm-karikatur-box">
                 <div className="mm-karikatur-head">KARİKATÜR</div>
                 {karikatur ? (
