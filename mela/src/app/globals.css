@@ -1137,7 +1137,7 @@ main video {
 
   justify-content: flex-end;
 
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
 
   border-radius: 12px;
 
@@ -1180,7 +1180,7 @@ main video {
 
   justify-content: flex-end;
 
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
 
   border-radius: 12px;
 
@@ -1213,7 +1213,7 @@ main video {
   position: absolute;
 
   top: 1rem;
-  left: 1.5rem;
+  left: 1.25rem;
 
   display: inline-flex;
 
@@ -1789,7 +1789,7 @@ main .grid > div:hover {
   position: relative;
 
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 320px;
 
   aspect-ratio: 16 / 9;
@@ -1800,7 +1800,8 @@ main .grid > div:hover {
 }
 
 .mm-manset-slide {
-  position: relative;
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -1819,6 +1820,8 @@ main .grid > div:hover {
 }
 
 .mm-manset-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
@@ -1846,7 +1849,7 @@ main .grid > div:hover {
   position: absolute;
 
   top: 1rem;
-  left: 1rem;
+  left: 1.25rem;
 
   display: inline-flex;
   align-items: center;
@@ -1877,7 +1880,7 @@ main .grid > div:hover {
   right: 0;
   bottom: 0;
 
-  padding: 1.1rem 1.25rem 3.2rem;
+  padding: 1.05rem 1.25rem 3.2rem;
 
   color: #fff;
 }
@@ -2289,9 +2292,9 @@ main .grid > div:hover {
 
     .mm-navbar-slider-frame {
       width: 100%;
-      max-width: 1545px;
+      max-width: 1600px;
       margin: 8px auto 12px;
-      padding: 0;
+      padding: 0 0.5rem;
       box-sizing: border-box;
       background: transparent;
       border: none;
@@ -2306,7 +2309,7 @@ main .grid > div:hover {
 
 
     /* ============================================================
-       İKİ KUTU — EŞİT BOYUT
+       ÜST SLIDER — ANA SAYFA KENARLARINA HIZALI
        ============================================================ */
 
     .mm-navbar-slider-inner > div {
@@ -2314,6 +2317,23 @@ main .grid > div:hover {
       display: grid;
       grid-template-columns: 1fr;
       gap: 37px;
+    }
+
+    .mm-slider-divider {
+      display: none;
+    }
+
+    .mm-weather-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      min-height: 190px;
+      padding: 1rem 1.1rem;
+      border-radius: 0;
+      border: none;
+      background: #ffffff;
+      box-shadow: none;
     }
 
     .mm-slider-divider {
@@ -2401,6 +2421,16 @@ main .grid > div:hover {
       height: 190px !important;
       margin: 0 !important;
       border-radius: 10px !important;
+    }
+
+    .mm-navbar-slider-inner .mm-yazar-slider {
+      margin-left: auto !important;
+      max-width: 440px !important;
+    }
+
+    .mm-navbar-slider-inner .mm-hero-slider {
+      margin-right: auto !important;
+      max-width: 440px !important;
     }
 
 

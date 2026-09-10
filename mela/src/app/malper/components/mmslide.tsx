@@ -1,6 +1,6 @@
 // Bismillahirrahmanirahim
 // Elhamdulillahirabbulalemin
-// Ve salatu ve selamu ala resulina Muhammedin ve alihi ve sahbihi ecmain
+// Ve salatu ve selamu ala resulina Muhammedin 
 // Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
 // Subhanallah, Elhamdulillah, Allahu Ekber
 // Estağfirullah El-Azim  
@@ -51,9 +51,9 @@ function UncontrolledExample() {
 
 export default UncontrolledExample;
 
-// Suphanallah Subhanallah Subhanallahi Azim ve Bihamdihi
+// SuphanAllah SubhanAllah SubhanAllahi Azim ve Bihamdihi
 // Elhamdulillah Elhamdulillah Elhamdulillah
-// Elhamdulillahirabbulalemin//Subhanallah Subhanallah Subhanallahi Azim ve Bihamdihi
+// Elhamdulillahirabbulalemin//SubhanAllah SubhanAllah SubhanAllahi Azim ve Bihamdihi
 // Elhamdulillah Elhamdulillah Elhamdulillah
 // Elhamdulillahirabbilalemin
 // La ilahe illAllah Muhammeden abduhu ve resuluhu

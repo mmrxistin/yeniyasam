@@ -24,6 +24,7 @@
  import Penc from './penc/ForYouFeed'
  import Se from './se/parvekirin'
  import Xane from './xane/ForYouFeed'
+import MmSlider from './components/mmslider'
  // El Hamdu Lîllah ya Rabbi'l-Âlemîn, El Hamdu Lîllah yâ Rabbi'l-Âlemîn, El Hamdu Lîllah yâ Rabbi'l-Âlemîn
  // La ilahe illALLAH u vahdehu la şerike leh, lehul-mulku ve lehu'l-hamdu.
  // Yuhyi ve yumit
@@ -33,14 +34,15 @@
 function page() {
   return (
     <main className="min-h-screen bg-white text-zinc-900">
-
+<MmSlider/>
       {/* LEAD BÖLÜMÜ: büyük manşet solda, liste sağda */}
       <section className="border-b border-zinc-200 bg-white px-4 py-6 sm:px-6">
-        <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-8 lg:grid-cols-12">
+      
+     <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-8 lg:grid-cols-12">
 
           <div className="lg:col-span-8">
             <div className="border border-zinc-200">
-              <MansetSlider />
+           
             </div>
           </div>
 

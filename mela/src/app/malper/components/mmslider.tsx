@@ -152,8 +152,9 @@ export default function MmSlider() {
         <SonDakikaSlider />
       </div>
 
-      <WeatherWidget />
+     
 
+<WeatherWidget/>
       <div>
         <YazarSlider />
       </div>

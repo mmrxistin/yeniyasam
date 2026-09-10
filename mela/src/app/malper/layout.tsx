@@ -34,12 +34,24 @@ const editorPicks = [
 
 // Günün Manşeti — yeniyasamgazetesi9.com/gunun-manseti/ sayfasından
 // güncel gazete kapağı dinamik olarak çekilir.
-async function getGununManseti(): Promise<{ img: string; href: string } | null> {
+async function fetchWithTimeout(url: string, timeoutMs = 8000) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
   try {
-    const res = await fetch("https://yeniyasamgazetesi9.com/gunun-manseti/", {
+    return await fetch(url, {
       next: { revalidate: 3600 },
       headers: { "User-Agent": "Mozilla/5.0 (compatible; YeniYasamBot/1.0)" },
+      signal: controller.signal,
     });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+async function getGununManseti(): Promise<{ img: string; href: string } | null> {
+  try {
+    const res = await fetchWithTimeout("https://yeniyasamgazetesi9.com/gunun-manseti/");
     if (!res.ok) return null;
     const html = await res.text();
     const now = new Date();
@@ -65,10 +77,7 @@ async function getGununManseti(): Promise<{ img: string; href: string } | null> 
 
 async function getKarikatur(): Promise<{ img: string; href: string; title: string } | null> {
   try {
-    const res = await fetch("https://yeniyasamgazetesi9.com/", {
-      next: { revalidate: 3600 },
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; YeniYasamBot/1.0)" },
-    });
+    const res = await fetchWithTimeout("https://yeniyasamgazetesi9.com/");
     if (!res.ok) return null;
 
     const html = await res.text();

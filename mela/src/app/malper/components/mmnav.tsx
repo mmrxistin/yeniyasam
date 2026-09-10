@@ -10,7 +10,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import MmSlider from './mmslider';
 
 const NAV_LINKS = [
   { href: '/malper', label: 'Ana Sayfa' },
@@ -23,6 +22,7 @@ const NAV_LINKS = [
   { href: '/malper/mmmmm', label: 'Yazarlar' },
   { href: '/malper/account', label: 'Forum' },
 ];
+
 
 function Mmmnavbar() {
 const [open, setOpen] = useState(false);
@@ -125,14 +125,6 @@ return (
       </nav>
     </div>
 
-    {/* SLIDER — ana sayfa ile aynı hizaya ve çerçeveye oturtulmuş */}
-    <div className="mx-auto w-full max-w-[1945px] py-12 ">
-      <div className="mm-navbar-slider-frame">
-        <div className="mm-navbar-slider-inner">
-          <MmSlider />
-        </div>
-      </div>
-    </div>
 
   </header>
 
