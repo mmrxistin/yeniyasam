@@ -6,7 +6,7 @@
 // Allah u Ekber Ve Lillahil Hamd
 
 // El Hamdu Lîllah ya Rabbi'l-Âlemîn, El Hamdu Lîllah yâ Rabbi'l-Âlemîn, El Hamdu Lîllah yâ Rabbi'l-Âlemîn
-// La ilahe illALLAH u vahdehu la şerike leh, lehul-mulku ve lehu'l-hamdu
+// La ilahe illALLAH u vahdehu la şerike leh, lehul-mulku ve lehu'l-hamdu.
 // Yuhyi ve yumit
 // Biyadihil xayr
 // ve huve ala kulli şey'in kadir

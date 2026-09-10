@@ -14,6 +14,7 @@ import ContactForm from "./components/mmfrm";
 import MmLiveTv from "./components/mmlivetv";
 import { YazarSlider } from "./components/mmslider";
 import MmJinDergi from "./components/mmjin";
+import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
 // Editörün Seçtikleri — yeniyasamgazetesi9.com güncel içerik
 const editorPicks = [
@@ -75,24 +76,46 @@ async function getKarikatur(): Promise<{ img: string; href: string; title: strin
 
 async function getJinDergiManset(): Promise<{ img: string; title: string; href: string } | null> {
   try {
-    const res = await fetchWithTimeout("https://jindergi.com/");
+    const res = await fetchWithTimeout("https://yeniyasamgazetesi9.com/");
     if (!res.ok) return null;
     const html = await res.text();
 
-    // Jin Dergi genellikle og:image ve og:title kullanır
-    const imgMatch = html.match(/<meta[^>]*property="og:image"[^>]*content="([^"]+)"/i);
-    const titleMatch = html.match(/<meta[^>]*property="og:title"[^>]*content="([^"]+)"/i);
-    const urlMatch = html.match(/<meta[^>]*property="og:url"[^>]*content="([^"]+)"/i);
+    // Yeni Yaşam Gazetesi üzerindeki JIN DERGİ kutusunu bul
+    const match = html.match(
+      /<h3[^>]*>\s*<span>JIN DERGİ<\/span>\s*<\/h3>[\s\S]*?<a[^>]*href="([^"]+)"[^>]*>\s*<img[^>]*src="([^"]+)"/i
+    );
 
-    if (imgMatch && titleMatch) {
+    if (match) {
+      // Sayı bilgisini caption'dan çekmeye çalış
+      const captionMatch = html.match(/<span>JIN DERGİ<\/span>[\s\S]*?<figcaption[^>]*>([\s\S]*?)<\/figcaption>/i);
+      const title = captionMatch ? `Jin Dergi — ${captionMatch[1].trim()}` : "Jin Dergi";
+
       return {
-        img: imgMatch[1],
-        title: titleMatch[1],
-        href: urlMatch ? urlMatch[1] : "https://jindergi.com"
+        img: match[2],
+        title: title,
+        href: "https://jindergi.com" // Tıklayınca jindergi.com'a gitmesi istendi
       };
     }
+
+    // Fallback: Eskisi gibi og:image denemesi (eğer ana sitede bulamazsa)
+    const fallbackRes = await fetchWithTimeout("https://jindergi.com/");
+    if (fallbackRes.ok) {
+      const fbHtml = await fallbackRes.text();
+      const imgMatch = fbHtml.match(/<meta[^>]*property="og:image"[^>]*content="([^"]+)"/i);
+      const titleMatch = fbHtml.match(/<meta[^>]*property="og:title"[^>]*content="([^"]+)"/i);
+      if (imgMatch && titleMatch) {
+        return {
+          img: imgMatch[1],
+          title: titleMatch[1],
+          href: "https://jindergi.com"
+        };
+      }
+    }
+
     return null;
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 }
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
@@ -115,6 +138,12 @@ export default async function Layout({ children }: { children: React.ReactNode }
                 <YazarSlider />
               </div>
               <MmLiveTv />
+
+              {/* JİN DERGİ — Sidebar Box (TV'nin hemen altında) */}
+              <div className="mt-2">
+                <MmJinDergi sidebar mansetData={jinManset} />
+              </div>
+
               <div className="mm-editor-pick">
                 <div className="mm-editor-head"><span className="mm-editor-star">★</span> EDİTÖRÜN SEÇTİKLERİ</div>
                 <div className="mm-editor-list">
@@ -145,25 +174,35 @@ export default async function Layout({ children }: { children: React.ReactNode }
                 ) : <div className="mm-karikatur-fallback">Karikatür şu anda yüklenemedi.</div>}
               </div>
 
-              {/* JİN DERGİ — Sidebar Box */}
-              <div className="mt-2">
-                <MmJinDergi sidebar mansetData={jinManset} />
-              </div>
-
               {/* E-GAZETE — Fill Gaps */}
-              <div className="mm-tv-card p-6 bg-zinc-900 text-white text-center mt-2 border-none">
-                <div className="text-[#d90000] text-xs font-black uppercase tracking-widest mb-1">Yeni Yaşam</div>
+              <div className="mm-tv-card p-6 bg-zinc-900 text-white text-center mt-2 border-none relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#d90000]"></div>
+                <div className="text-[#d90000] text-[10px] font-black uppercase tracking-widest mb-1">Yeni Yaşam</div>
                 <h2 className="text-2xl font-black italic tracking-tighter mb-2">e-gazete</h2>
-                <p className="text-[11px] text-zinc-400 mb-5 leading-relaxed">
-                  Basılı gazete keyfini dijitalde yaşayın. <br />
-                  Tüm arşiv bir tık uzağınızda.
+                <div className="flex justify-center mb-4">
+                  <div className="w-10 h-1 bg-zinc-700"></div>
+                </div>
+                <p className="text-[11px] text-zinc-400 mb-6 leading-relaxed px-2">
+                  Gazetemizin basılı nüshalarına dijital ortamda ulaşın. <br />
+                  Arşiv ve günlük sayılar bir arada.
                 </p>
                 <a
                   href="/subscribe"
-                  className="inline-block w-full py-2.5 bg-white text-zinc-950 text-[10px] font-black uppercase tracking-[0.2em] rounded hover:bg-[#d90000] hover:text-white transition-all shadow-xl"
+                  className="inline-block w-full py-3 bg-[#d90000] text-white text-[10px] font-black uppercase tracking-[0.2em] rounded hover:bg-white hover:text-zinc-950 transition-all shadow-xl"
                 >
                   HEMEN ABONE OL
                 </a>
+              </div>
+
+              {/* SOSYAL MEDYA — Sidebar Footer */}
+              <div className="flex justify-between items-center px-2 py-4 mt-2 border-t border-zinc-100 dark:border-zinc-800">
+                <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest">Bizi Takip Edin</span>
+                <div className="flex gap-3 text-zinc-400">
+                  <a href="#" className="hover:text-[#d90000] transition-colors"><Facebook size={14} /></a>
+                  <a href="#" className="hover:text-[#d90000] transition-colors"><Twitter size={14} /></a>
+                  <a href="#" className="hover:text-[#d90000] transition-colors"><Instagram size={14} /></a>
+                  <a href="#" className="hover:text-[#d90000] transition-colors"><Youtube size={14} /></a>
+                </div>
               </div>
             </div>
           </aside>
