@@ -13,6 +13,7 @@ import Footer from "./components/mmbingeh";
 import ContactForm from "./components/mmfrm";
 import MmLiveTv from "./components/mmlivetv";
 import { YazarSlider } from "./components/mmslider";
+import MmJinDergi from "./components/mmjin";
 
 // Editörün Seçtikleri — yeniyasamgazetesi9.com güncel içerik
 const editorPicks = [
@@ -119,6 +120,27 @@ export default async function Layout({ children }: { children: React.ReactNode }
                     <span className="mm-karikatur-caption">Günün karikatürü</span>
                   </a>
                 ) : <div className="mm-karikatur-fallback">Karikatür şu anda yüklenemedi.</div>}
+              </div>
+
+              {/* JİN DERGİ — Sidebar Box */}
+              <div className="mt-2">
+                <MmJinDergi sidebar />
+              </div>
+
+              {/* E-GAZETE — Fill Gaps */}
+              <div className="mm-tv-card p-6 bg-zinc-900 text-white text-center mt-2 border-none">
+                <div className="text-[#d90000] text-xs font-black uppercase tracking-widest mb-1">Yeni Yaşam</div>
+                <h2 className="text-2xl font-black italic tracking-tighter mb-2">e-gazete</h2>
+                <p className="text-[11px] text-zinc-400 mb-5 leading-relaxed">
+                  Basılı gazete keyfini dijitalde yaşayın. <br />
+                  Tüm arşiv bir tık uzağınızda.
+                </p>
+                <a
+                  href="/subscribe"
+                  className="inline-block w-full py-2.5 bg-white text-zinc-950 text-[10px] font-black uppercase tracking-[0.2em] rounded hover:bg-[#d90000] hover:text-white transition-all shadow-xl"
+                >
+                  HEMEN ABONE OL
+                </a>
               </div>
             </div>
           </aside>

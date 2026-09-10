@@ -649,7 +649,8 @@ main video {
 
   box-shadow: none;
 
-  position: relative;
+  position: sticky;
+  top: 80px;
 }
 
 .mm-tv-panel::before {
