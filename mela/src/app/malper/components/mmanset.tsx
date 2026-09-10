@@ -56,38 +56,38 @@ function MansetSlider() {
   const item = mansetler[index];
 
   return (
-    <div className="mm-manset-slider">
-      <a href={item.href} className="mm-manset-slide mm-manset-active" aria-label={item.title}>
-        <img src={item.img} alt={item.title} className="mm-manset-img" draggable={false} />
-        <div className="mm-manset-grad" />
+    <div className="mm-ms-slider">
+      <a href={item.href} className="mm-ms-slide mm-ms-active" aria-label={item.title}>
+        <img src={item.img} alt={item.title} className="mm-ms-img" draggable={false} />
+        <div className="mm-ms-grad" />
 
-        <div className="mm-manset-tag">
+        <div className="mm-ms-tag">
           <span className="size-2 rounded-full bg-white animate-pulse" />
           MANŞET • {item.cat}
         </div>
 
-        <div className="mm-manset-text">
-          <h2 className="mm-manset-title">{item.title}</h2>
-          <p className="mm-manset-desc">{item.desc}</p>
+        <div className="mm-ms-text">
+          <h2 className="mm-ms-title">{item.title}</h2>
+          <p className="mm-ms-desc">{item.desc}</p>
         </div>
       </a>
 
       {/* Oklar */}
-      <button aria-label="Önceki haber" className="mm-manset-arrow mm-manset-prev" onClick={(e) => { e.preventDefault(); onceki(); }}>
+      <button aria-label="Önceki haber" className="mm-ms-arrow mm-ms-prev" onClick={(e) => { e.preventDefault(); onceki(); }}>
         ‹
       </button>
-      <button aria-label="Sonraki haber" className="mm-manset-arrow mm-manset-next" onClick={(e) => { e.preventDefault(); sonraki(); }}>
+      <button aria-label="Sonraki haber" className="mm-ms-arrow mm-ms-next" onClick={(e) => { e.preventDefault(); sonraki(); }}>
         ›
       </button>
 
       {/* Noktalar */}
-      <div className="mm-manset-dots">
+      <div className="mm-ms-dots">
         {mansetler.map((_, i) => (
           <button
             key={i}
             aria-label={`Haber ${i + 1}`}
             onClick={(e) => { e.preventDefault(); goto(i); }}
-            className={`mm-manset-dot ${i === index ? "active" : ""}`}
+            className={`mm-ms-dot ${i === index ? "active" : ""}`}
           />
         ))}
       </div>

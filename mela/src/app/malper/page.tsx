@@ -41,8 +41,8 @@ function page() {
      <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-8 lg:grid-cols-12">
 
           <div className="lg:col-span-8">
-            <div className="border border-zinc-200">
-           
+            <div className="border border-zinc-200 overflow-hidden rounded-lg">
+              <MansetSlider />
             </div>
           </div>
 

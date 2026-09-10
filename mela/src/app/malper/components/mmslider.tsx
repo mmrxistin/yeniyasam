@@ -99,7 +99,7 @@ function SonDakikaSlider() {
   );
 }
 
-function YazarSlider() {
+export function YazarSlider() {
   const [index, setIndex] = useAutoIndex(yazarlar.length);
   const item = yazarlar[index];
 
@@ -147,17 +147,12 @@ function WeatherWidget() {
 
 export default function MmSlider() {
   return (
-    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-[1fr_minmax(260px,420px)_1fr] lg:items-center">
+    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-5 lg:grid-cols-[2fr_1fr] lg:items-center">
       <div>
         <SonDakikaSlider />
       </div>
 
-     
-
-<WeatherWidget/>
-      <div>
-        <YazarSlider />
-      </div>
+      <WeatherWidget />
     </div>
   );
 }

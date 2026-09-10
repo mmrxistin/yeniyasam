@@ -12,6 +12,7 @@ import Mmmnavbar from "./components/mmnav";
 import Footer from "./components/mmbingeh";
 import ContactForm from "./components/mmfrm";
 import MmLiveTv from "./components/mmlivetv";
+import { YazarSlider } from "./components/mmslider";
 
 // Yeni Yaşam Media YouTube kanalı
 const CHANNEL_ID = "UCeHJLmZ75jsot6tzDk-BUUA";
@@ -142,37 +143,17 @@ export default async function Layout({
           </main>
 
           {/* TV KOLONU */}
-          <aside className="mm-tv-col p-2 sm:p-3">
+          <aside className="mm-tv-col p-2 sm:p-3 md:pt-5">
 
             <div className="mm-tv-panel">
 
+              {/* Yazarlar Üstte */}
+              <div className="pt-5 mb-4">
+                <YazarSlider />
+              </div>
+
               {/* ABC News tarzı Canlı TV */}
               <MmLiveTv />
-
-              {/* GÜNÜN MANŞETİ — gazete kapağı */}
-              <div className="mm-manset-box">
-                <div className="mm-manset-head">GÜNÜN MANŞETİ</div>
-                {manset ? (
-                  <a
-                    href={manset.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mm-manset-link"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={manset.img}
-                      alt={`Günün Manşeti — ${bugun}`}
-                      className="mm-manset-img"
-                    />
-                    <span className="mm-manset-date">{bugun}</span>
-                  </a>
-                ) : (
-                  <div className="mm-manset-fallback">
-                    Gazete kapağı şu anda yüklenemedi.
-                  </div>
-                )}
-              </div>
 
               {/* Editörün Seçtikleri */}
               <div className="mm-editor-pick">
@@ -198,6 +179,31 @@ export default async function Layout({
                     </a>
                   ))}
                 </div>
+              </div>
+
+              {/* GÜNÜN MANŞETİ — gazete kapağı */}
+              <div className="mm-manset-box">
+                <div className="mm-manset-head">GÜNÜN MANŞETİ</div>
+                {manset ? (
+                  <a
+                    href={manset.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mm-manset-link"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={manset.img}
+                      alt={`Günün Manşeti — ${bugun}`}
+                      className="mm-manset-img"
+                    />
+                    <span className="mm-manset-date">{bugun}</span>
+                  </a>
+                ) : (
+                  <div className="mm-manset-fallback">
+                    Gazete kapağı şu anda yüklenemedi.
+                  </div>
+                )}
               </div>
 
               <div className="mm-karikatur-box">
