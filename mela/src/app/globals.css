@@ -2483,3 +2483,534 @@ main .grid > div:hover {
       }
 
     }
+
+/* ============================================================
+   YY — ozgurhalk.com/yy tasarımı (malper)
+   ============================================================ */
+.yy-shell {
+  width: 100%;
+  padding: 0 0.75rem;
+}
+
+/* ÜST KATEGORİ ŞERİDİ */
+.yy-topstrip {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e4e4e7;
+}
+.dark .yy-topstrip {
+  background: #18181b;
+  border-bottom-color: #27272a;
+}
+.yy-topstrip-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.5rem;
+}
+.yy-topstrip-link {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #18181b;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.yy-topstrip-link.yy-accent {
+  color: #d90000;
+}
+.yy-topstrip-link:hover {
+  color: #d90000;
+}
+.dark .yy-topstrip-link {
+  color: #e4e4e7;
+}
+.dark .yy-topstrip-link.yy-accent {
+  color: #f87171;
+}
+.yy-topstrip-dot {
+  color: #a1a1aa;
+  font-size: 0.65rem;
+}
+.yy-topstrip-sep {
+  width: 1px;
+  height: 1rem;
+  background: #e4e4e7;
+  margin: 0 0.35rem;
+}
+.dark .yy-topstrip-sep {
+  background: #3f3f46;
+}
+
+/* IZGARA — ana kolon + sağ ray */
+.yy-grid-frame {
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 1.25rem;
+  padding: 1rem 0;
+}
+.yy-main-col {
+  min-width: 0;
+}
+.yy-rail-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* SAĞ RAY KUTULARI */
+.yy-rail-box {
+  display: block;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow 0.2s;
+}
+.yy-rail-box:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.dark .yy-rail-box {
+  background: #18181b;
+  border-color: #27272a;
+}
+.yy-rail-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #18181b;
+  border-bottom: 1px solid #e4e4e7;
+}
+.dark .yy-rail-head {
+  color: #e4e4e7;
+  border-bottom-color: #27272a;
+}
+.yy-rail-head-red {
+  color: #d90000;
+}
+.yy-rail-head-red .yy-rail-arrow {
+  color: #d90000;
+}
+.yy-rail-arrow {
+  color: #a1a1aa;
+  font-size: 0.8rem;
+}
+.yy-rail-box-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+.yy-rail-manset-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  background: #fafafa;
+}
+.yy-rail-fallback {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #71717a;
+}
+
+/* DESTEK OL KUTUSU */
+.yy-support-box {
+  background: #18181b;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+.yy-support-label {
+  color: #d90000;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.yy-support-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+.yy-support-text {
+  font-size: 0.72rem;
+  color: #a1a1aa;
+  margin: 0 0 1rem;
+}
+.yy-support-btn {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 0;
+  background: #d90000;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.35rem;
+  transition: background 0.2s;
+}
+.yy-support-btn:hover {
+  background: #b00000;
+}
+
+/* EDİTÖRÜN SEÇTİKLERİ */
+.yy-editor-box {
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.dark .yy-editor-box {
+  background: #18181b;
+  border-color: #27272a;
+}
+.yy-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 2px solid #d90000;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.yy-editor-all {
+  font-size: 0.62rem;
+  color: #71717a;
+  text-decoration: none;
+}
+.yy-editor-all:hover {
+  color: #d90000;
+}
+.yy-editor-list {
+  display: flex;
+  flex-direction: column;
+}
+.yy-editor-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid #f4f4f5;
+  text-decoration: none;
+}
+.yy-editor-item:last-child {
+  border-bottom: none;
+}
+.dark .yy-editor-item {
+  border-bottom-color: #27272a;
+}
+.yy-editor-cat {
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d90000;
+}
+.yy-editor-txt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #18181b;
+}
+.dark .yy-editor-txt {
+  color: #e4e4e7;
+}
+.yy-editor-item:hover .yy-editor-txt {
+  color: #d90000;
+}
+
+/* SOSYAL MEDYA ŞERİDİ */
+.yy-social-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0.5rem;
+  border-top: 1px solid #e4e4e7;
+  color: #71717a;
+}
+.dark .yy-social-bar {
+  border-top-color: #27272a;
+}
+.yy-social-label {
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ANA SAYFA BÖLÜMLERİ (yy-) */
+.yy-section {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #e4e4e7;
+}
+.dark .yy-section {
+  border-bottom-color: #27272a;
+}
+.yy-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #18181b;
+}
+.dark .yy-section-head {
+  border-bottom-color: #e4e4e7;
+}
+.yy-section-title {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.yy-section-all {
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: #d90000;
+  text-decoration: none;
+}
+.yy-section-all:hover {
+  text-decoration: underline;
+}
+
+/* KÖŞE YAZILARI — GÜNÜN YAZARLARI */
+.yy-yazarlar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+.yy-yazar-card {
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.5rem;
+  padding: 0.9rem;
+  text-decoration: none;
+  transition: box-shadow 0.2s;
+}
+.yy-yazar-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.dark .yy-yazar-card {
+  background: #18181b;
+  border-color: #27272a;
+}
+.yy-yazar-name {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #d90000;
+  margin-bottom: 0.35rem;
+}
+.yy-yazar-title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #18181b;
+}
+.dark .yy-yazar-title {
+  color: #e4e4e7;
+}
+.yy-yazar-card:hover .yy-yazar-title {
+  color: #d90000;
+}
+
+/* MEDYA / VİDEO ŞERİDİ */
+.yy-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.9rem;
+}
+.yy-video-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  text-decoration: none;
+}
+.yy-video-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.yy-video-card:hover img {
+  transform: scale(1.06);
+}
+.yy-video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yy-video-play span {
+  width: 2.6rem;
+  height: 2.6rem;
+  background: rgba(217, 0, 0, 0.92);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.yy-video-cat {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: #d90000;
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
+.yy-video-title {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #18181b;
+}
+.dark .yy-video-title {
+  color: #e4e4e7;
+}
+.yy-video-card:hover .yy-video-title {
+  color: #d90000;
+}
+
+/* KATEGORİ BLOKLARI */
+.yy-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.yy-cat-col-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid #d90000;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.yy-cat-lead {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 0.9rem;
+}
+.yy-cat-lead-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+.yy-cat-lead-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #18181b;
+}
+.dark .yy-cat-lead-title {
+  color: #e4e4e7;
+}
+.yy-cat-lead:hover .yy-cat-lead-title {
+  color: #d90000;
+}
+.yy-cat-item {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.55rem 0;
+  border-top: 1px solid #f4f4f5;
+  text-decoration: none;
+}
+.dark .yy-cat-item {
+  border-top-color: #27272a;
+}
+.yy-cat-item-dot {
+  color: #d90000;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+.yy-cat-item-txt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #18181b;
+}
+.dark .yy-cat-item-txt {
+  color: #d4d4d8;
+}
+.yy-cat-item:hover .yy-cat-item-txt {
+  color: #d90000;
+}
+
+/* FOOTER ÜSTİ KIRMIZI ÇİZGİ */
+.yy-red-line {
+  height: 4px;
+  background: #d90000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .yy-grid-frame {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
+}
+@media (max-width: 900px) {
+  .yy-grid-frame {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .yy-rail-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+}
+@media (max-width: 560px) {
+  .yy-rail-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .yy-topstrip-inner {
+    gap: 0.4rem;
+    font-size: 0.65rem;
+  }
+}
