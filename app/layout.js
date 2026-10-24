@@ -3,7 +3,8 @@
 // Es selatu vesSelamû ala rasûlîna Muhammedîn
 // La îlahe îll Allah
 // Muhammedur Rasûlûllah
-
+//EL HAMDU LÎLLAH YA REZZAK Î QÛDDUS
+//ALLAH Û EKBER VE LA ÎLAHE ÎLLALLAH
 
 import './globals.css';
 import { SITE } from '@/lib/site';
