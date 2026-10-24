@@ -4,7 +4,7 @@
 // La îlahe îll Allah
 // Muhammedur Rasûlûllah
 
-Tek yazar sayfası — kaynak yapıdaki yazar.php karşılığı.
+// Tek yazar sayfası — kaynak yapıdaki yazar.php karşılığı.
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SearchOverlay from '@/components/SearchOverlay';

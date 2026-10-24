@@ -4,7 +4,7 @@
 // La îlahe îll Allah
 // Muhammedur Rasûlûllah
 
-Arama sonuçları — kaynak yapıdaki arama.php karşılığı.
+// Arama sonuçları — kaynak yapıdaki arama.php karşılığı.
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SearchOverlay from '@/components/SearchOverlay';

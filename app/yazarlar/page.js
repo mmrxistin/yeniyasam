@@ -4,7 +4,7 @@
 // La îlahe îll Allah
 // Muhammedur Rasûlûllah
 
-Yazar listesi — kaynak yapıdaki yazarlar.php karşılığı.
+// Yazar listesi — kaynak yapıdaki yazarlar.php karşılığı.
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SearchOverlay from '@/components/SearchOverlay';
